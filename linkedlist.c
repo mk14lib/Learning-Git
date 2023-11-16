@@ -49,9 +49,42 @@ void printlist(struct node* head)
 int main()
 {
 	struct node* head = NULL;
-	head = createNode(10);
-	append(head, 16);
-	append(head, 18);
-	printlist(head);
+
+	while(1)
+	{
+		printf("\n\nLinkedlist Menu:\n");
+		printf(" 1. Add element\n");
+		printf(" 2. Print List\n");
+		printf(" 3. Exit\n");
+		printf("Enter your choice: ");
+		int num   = 0;
+		int value = 0;
+		scanf("%d", &num);
+		switch(num)
+		{
+			case 1:
+			printf("Enter a value: ");
+			scanf("%d", &value);
+			if (head == NULL)
+			{
+				head = createNode(value);
+				break;
+			}
+			append(head, value);
+			break;
+			
+			case 2:
+			printlist(head);
+			break;
+			
+			default:
+			printlist(head);
+			free(head);
+			exit(0);
+			break;
+		}
+	}
+
+	
 	return 0;
 }
