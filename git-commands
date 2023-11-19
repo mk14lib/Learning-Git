@@ -1,0 +1,121 @@
+~/.bashrc configuration (on windows):
+----->>>>>>>>>>>>>>>>>>>>>
+alias npp="notepad++.exe -multiInst -nosession"
+
+~/.gitconfig 
+---->>>>>>>>>>>>>>>>>>>>>>
+git config --global core.editor "notepad++.exe -multiInst -nosession"
+
+~/.gitignore
+---->>>>>>>>>>>>>>>>>>>>>
+file with filenames to be ignored 
+
+[ G I T  C O N F I G U R A T I O N ] 
+git config --global user.name "name"
+git config --global user.email "email"
+git config --global alias.hist "log --oneline --decorate --graph --all" # command aliasing
+git config --global merge.tool p4merge
+git config --global mergetool.p4merge.path "path2exe"
+git config --global mergetool.prompt false
+git config --global diff.tool p4merge
+git config --global difftool.p4merge.path "path2exe"
+git config --global difftool.prompt false
+git config --global --list
+
+[ G I T  B A S I C S ]
+git init 
+git clone https://github.com/.../
+git status
+git add <filename>
+git add .  # add recursively
+git add -u # add both untracked and tracked files
+git add -A 
+git commit -m "some_message"
+git commit -am "some_message" #stage and commit
+git pull 
+git push origin master
+
+[ R E V E R T ]
+git reset HEAD <filename>
+git checkout -- <filename>
+
+[ M O V E ,  R E N A M E  &  D E L E T E]
+git mv <filename> #move or rename
+git rm <filename> #delete
+git show <commit-id>
+
+[ L O G ]
+git log
+git log --abbrev-commit
+git log -- <filename> # changes log of single file
+git log --follow -- <folder/folder/filename>
+git log --oneline --decorate --graph --all
+git show # detailed expansion of changes
+
+[ D I F F ]
+git diff # working area vs. staging area
+git diff HEAD # working area vs. local repo
+git diff --staged HEAD # staging area vs. local repo
+git diff -- <filename> # limit comparison to one file
+git diff <commit-id> HEAD # compare with x  commit with last commit
+git diff HEAD HEAD^
+git diff master origin/master # compares local to remote repo
+
+[ B R A N C H I N G ]
+git branch <branch-name>
+git branch -a # list all branches
+git checkout <branch-name>
+git checkout -b <branch-name> # create and switch to branch
+git branch -m <old-name> <new-name> # rename branch
+git branch -d <branch-name>
+git branch # list local branches
+
+[ M E R G I N G ]:
+(in master)
+git merge <sub-branch-name>
+git merge <sub-branch-name> --no-ff
+gif merge <sub-branch-name> -m "message"
+
+[ R E B A S I N G ]
+** create branch, make changes to files
+** checkout master, make changes 
+** checkout back to your branch 
+** apply " git rebase master "
+git rebase --abort
+git rebase --continue
+git fetch origin master
+git pull --rebase origin master
+
+[ S T A S H I N G ]
+** this is a save buffer for work in progress files **
+git stash # save the changes and revert the file
+git stash apply # to apply the WIP changes
+git stash list  # list all recorded stashes
+git stash drop  # drop the last stash
+git stash -u    # save the changes made to both tr & u
+git stash pop   # combo of apply & drop
+git stash save "write something"
+git stash apply stash@{ value }
+git stash branch <branch-name>
+git stash show stash@{ value }
+
+[T A G G I N G ] --> naming the commit
+git tag <specify-tag-name> # lightweight tag
+git tag --list              # list the tags
+git tag --delete <tag-name> # remove tag 
+git tag -a <spectify-tag-name> # annotated tag
+git diff <tag-1-ref> <tag-2-ref> # compare tags
+git tag -a <specify-tag-name> <commit-id> # attach annotated tag to particular commit
+git tag -a <specify-tag-name> -f <commit-id> # force change used tag with another commit
+git push origin <tag-name> # sync tag with remote
+git push origin master --tags # sync all tags with remote
+git push origin :<tag-name> # delete the specific tag from remote not from local repo
+
+[ R E S E T  &  R E F L O G ]
+git reset HEAD^ # unstage last commit
+git reset HEAD^2
+git reflog     # lists all local commits
+git reset <commit-id>
+git reset HEAD@{ value }
+
+
